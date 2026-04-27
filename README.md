@@ -1,3 +1,4 @@
+
 # ASM86 — A Two-Pass 8086-Subset Assembler in C++
 
 A from-scratch two-pass assembler for a simplified 8086-inspired instruction set, written in C++17. Includes an optimizer that runs between the two passes and a register-based virtual machine (VM) to execute the assembled bytecode.
@@ -201,6 +202,7 @@ Output:
 ```
 AX=10  BX=3  CX=2  DX=0     (0x10 = 16 decimal)
 ```
+<img width="593" height="384" alt="Screenshot 2026-04-28 at 2 28 16 AM" src="https://github.com/user-attachments/assets/4c153499-27af-4920-9337-49bfcd058f53" />
 
 The optimizer folds `MOV AX,5 / MOV BX,3 / ADD AX,BX` into `MOV AX,8` at assemble time, reducing 6 instructions to 4.
 
@@ -224,6 +226,7 @@ Output:
 AX=F  CX=0  ZF=1    (0xF = 15 decimal)
 Steps: 18           (2 setup + 3 per iteration × 5 + 1 HLT)
 ```
+<img width="539" height="422" alt="Screenshot 2026-04-28 at 2 29 21 AM" src="https://github.com/user-attachments/assets/c1e485b2-d483-4680-8dc7-51cd5c85587a" />
 
 The optimizer correctly detects the `JNZ` and skips constant folding — register values change across loop iterations so folding would be unsafe.
 
@@ -249,6 +252,7 @@ AX=E  BX=2          (0xE = 14 decimal)
 ```
 
 ---
+<img width="429" height="408" alt="Screenshot 2026-04-28 at 2 31 24 AM" src="https://github.com/user-attachments/assets/0fc20bef-59d4-447b-9aa9-b7e16765508d" />
 
 ### Example4.asm — Optimizer Demo
 Deliberately written to trigger all three optimization passes.
@@ -272,6 +276,7 @@ Run with and without `--no-opt` to compare:
 ```
 
 ---
+<img width="471" height="368" alt="Screenshot 2026-04-28 at 2 32 28 AM" src="https://github.com/user-attachments/assets/045986bb-f86a-4b7f-a7ee-cc75aadb8cc3" />
 
 ## File Structure
 
